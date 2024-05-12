@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      #main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="main">
+      <canvas id="myCanvas" width="300" height="200"></canvas>
+    </div>
+
+    <script>
+      window.onload = function () {
+        var canvas = document.getElementById("myCanvas");
+        var context = canvas.getContext("2d");
+
+        // Draw a colorful triangle
+        context.beginPath();
+        context.moveTo(50, 150);
+        context.lineTo(250, 50);
+        context.lineTo(150, 150);
+        context.closePath();
+        var triangleGradient = context.createLinearGradient(50, 50, 250, 150);
+        triangleGradient.addColorStop(0, "#FF6B6B");
+        triangleGradient.addColorStop(0.5, "#FFD166");
+        triangleGradient.addColorStop(1, "#06D6A0");
+        context.fillStyle = triangleGradient;
+        context.fill();
+
+        // Draw a rectangle with a pattern
+        var pattern = context.createPattern(
+          document.getElementById("patternImg"),
+          "repeat"
+        );
+        context.fillStyle = pattern;
+        context.fillRect(50, 50, 200, 100);
+
+        // Draw a circle with text
+        context.beginPath();
+        context.arc(150, 100, 45, 0, 2 * Math.PI, false);
+        var circleGradient = context.createRadialGradient(
+          150,
+          100,
+          5,
+          150,
+          100,
+          45
+        );
+        circleGradient.addColorStop(0, "#FFD166");
+        circleGradient.addColorStop(1, "#EF476F");
+        context.fillStyle = circleGradient;
+        context.fill();
+        context.lineWidth = 2;
+        context.strokeStyle = "#06D6A0";
+        context.stroke();
+
+        // Add text
+        context.font = "bold 18px Arial";
+        context.fillStyle = "#000";
+        context.fillText("Ayush", 100, 190);
+      };
+    </script>
+
+    <!-- Additional resources -->
+    <img
+      id="patternImg"
+      src="https://www.transparenttextures.com/patterns/asfalt-dark.png"
+      style="display: none"
+    />
+  </body>
+</html>

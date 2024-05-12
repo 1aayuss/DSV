@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      #main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f2f2f2;
+      }
+
+      #myCanvas {
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="main">
+      <canvas id="myCanvas" width="300" height="250"></canvas>
+    </div>
+
+    <script>
+      window.onload = function () {
+        var canvas = document.getElementById("myCanvas");
+        var context = canvas.getContext("2d");
+
+        context.beginPath();
+        context.moveTo(50, 150);
+        context.lineTo(250, 50);
+        context.lineWidth = 5;
+        context.strokeStyle = "#FF5252";
+        context.rect(50, 50, 200, 100);
+        context.stroke();
+
+        var grd = context.createRadialGradient(150, 100, 10, 160, 110, 100);
+        grd.addColorStop(0, "#FFA07A");
+        grd.addColorStop(1, "#FFD700");
+        context.fillStyle = grd;
+        context.beginPath();
+        context.arc(150, 100, 45, 0, 2 * Math.PI, false);
+        context.fill();
+
+        context.font = "bold 30px Arial";
+        context.fillStyle = "#333";
+        context.fillText("Ayush Makwana", 30, 200);
+        context.stroke();
+      };
+    </script>
+  </body>
+</html>
